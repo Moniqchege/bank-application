@@ -1,1 +1,120 @@
-<p>new-loan-form works!</p>
+<div class="container my-4 p-4 shadow rounded bg-light">
+    <h2 class="mb-3 fw-bold text-center heading">
+      <span><i class="bi bi-bank2"></i></span>
+      Bank Application
+      <span><i class="bi bi-bank2"></i></span>
+    </h2>
+  
+    <form>
+      <!-- Personal Details -->
+      <div class="mb-4">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="mb-3 text-primary fw-bold heading">Personal Details</h3>
+          </div>
+  
+          <div class="col-md-6">
+            <label for="fullName" class="form-label">Full Name:</label>
+            <input id="fullName" name="fullName" type="text" [(ngModel)]="fullName"
+              class="form-control border-2 shadow-sm" placeholder="Enter your full name" />
+          </div>
+  
+          <div class="col-md-6">
+            <label for="idNo" class="form-label">ID Number:</label>
+            <input id="idNo" name="idNumber" type="text" [(ngModel)]="idNumber"
+              class="form-control border-2 shadow-sm" placeholder="Enter your ID number" />
+          </div>
+        </div>
+      </div>
+  
+      <hr>
+  
+      <!-- Loan Details Form -->
+      <div class="mb-4">
+        <h4 class="text-primary fw-bold heading">Loan Details</h4>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="bankName" class="form-label">Bank Name:</label>
+            <input id="bankName" name="bankName" type="text" [(ngModel)]="bankName"
+              class="form-control border-2 shadow-sm" placeholder="Bank Name" />
+          </div>
+  
+          <div class="col-md-6">
+            <label for="loanType" class="form-label">Loan Type:</label>
+            <select id="loanType" name="loanType" [(ngModel)]="loanType" class="form-select border-2 shadow-sm">
+              <option value="">Select Type</option>
+              <option value="Personal Loan">Personal Loan</option>
+              <option value="Business Loan">Business Loan</option>
+              <option value="Home Loan">Home Loan</option>
+              <option value="Education Loan">Education Loan</option>
+            </select>
+          </div>
+  
+          <div class="col-md-6">
+            <label for="loanAmount" class="form-label">Loan Amount:</label>
+            <input id="loanAmount" name="loanAmount" type="number" [(ngModel)]="loanAmount"
+              class="form-control border-2 shadow-sm" placeholder="Enter amount" />
+          </div>
+  
+          <div class="col-md-6">
+            <label for="emi" class="form-label">EMI:</label>
+            <input id="emi" name="emi" type="number" [(ngModel)]="emi"
+              class="form-control border-2 shadow-sm" placeholder="Enter EMI" />
+          </div>
+  
+          <div class="col-md-12">
+            <label for="loanStatus" class="form-label">Loan Status:</label>
+            <select id="loanStatus" name="loanStatus" [(ngModel)]="loanStatus" class="form-select border-2 shadow-sm">
+              <option value="">Select Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+  
+          <div class="col-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-sm text-white mt-3 addmore" (click)="addLoan()">Add Loan</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Loan List Table -->
+      <div>
+        <h4 class="mt-4 text-primary fw-bold heading">Added Loans</h4>
+        <table class="table table-striped table-bordered mt-3">
+          <thead class="table-dark">
+            <tr>
+              <th>Sr No</th>
+              <th><i class="bi bi-bank white-icon"></i><span class="ms-2">Full Name</span></th>
+              <th><i class="bi bi-bank white-icon"></i><span class="ms-2">Bank Name</span></th>
+              <th><i class="bi bi-currency-dollar white-icon"></i><span class="ms-2">Loan Amount</span></th>
+              <th><i class="bi bi-credit-card white-icon"></i><span class="ms-2">EMI</span></th>
+              <th><i class="bi bi-credit-card white-icon"></i><span class="ms-2">Loan Type</span></th>
+              <th><i class="bi bi-credit-card white-icon"></i><span class="ms-2">Loan Status</span></th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let loan of loanDetails; let i = index" class="loan-card">
+              <td>{{ i + 1 }}</td>
+              <td>{{ loan.fullName }}</td>
+              <td>{{ loan.bankName }}</td>
+              <td>{{ loan.loanAmount }}</td>
+              <td>{{ loan.emi }}</td>
+              <td>{{ loan.loanType }}</td>
+              <td>{{ loan.loanStatus }}</td>
+              <td>
+                <div class="d-flex justify-content-center gap-2">
+                  <button type="button" class="btn text-white btn-save" (click)="editLoan(i)">Edit</button>
+                  <button type="button" class="btn text-white btn-update" [disabled]="selectedLoanIndex !== i"
+                    (click)="updateLoan(i)">Update</button>
+                  <button type="button" class="btn text-white btn-delete" (click)="deleteLoan(i)">Delete</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+  

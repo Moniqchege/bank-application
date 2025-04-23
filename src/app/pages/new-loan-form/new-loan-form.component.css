@@ -1,0 +1,31 @@
+.heading {
+    color: #1e3c72 !important;
+}
+
+.addmore {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1)"
+
+}
+
+.form-control::placeholder {
+    font-size: 16px;
+}
+
+i {
+    color: #1e3c72 !important;
+}
+.btn-save {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+}
+.btn-update {
+    background: linear-gradient(to right, #11998e, #38ef7d);
+}
+.btn-delete {
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+}
+.white-icon {
+    color: white !important;
+  }
+  
